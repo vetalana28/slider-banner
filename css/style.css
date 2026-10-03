@@ -249,35 +249,50 @@ a img {
     border-bottom: 4px solid rgb(220, 125, 125);
 }
 
-.about-content {
-    justify-content: space-between;
+.about-block {
     display: flex;
-    pointer-events: none;
+    gap: 20px;
+    justify-content: space-between;
 }
 
-.about-content-active {
+.block {
+    background-color: #9ed7cf;
     position: relative;
-    top: -10px;
-    margin-right: 10px;
-    width: 32%;
-    opacity: 0.8;
-   background-image: linear-gradient(
-        rgba(234, 105, 105, 0.87),
-        rgba(255, 239, 91, 0.8)
-    ), url(../image/about/1.jpg);
-    background-size: cover;
-    box-shadow: 10px 10px 0px rgba(120, 218, 200, 0.799);
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    h3{
-        color: white;
-    }
     
 }
+
+.block-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: linear-gradient(to bottom, #d47170, #e6d286);
+}
+
+.block-img img {
+    display: block;
+    /* vertical-align: middle; */
+}
+
+.block-img img:hover {
+    opacity: 0.1;
+}
+
+.block-img:hover {
+    transform: translate(-10px, -10px);
+}
+
+.block p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    z-index: -1;
+}
+
 
 .achivments
 {
