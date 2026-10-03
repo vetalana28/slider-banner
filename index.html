@@ -68,38 +68,70 @@
                     dignissimos!
                 </p>
             </div>
-            <div class="about-content mt-120">
-                <div class="about-content-active">
-                    <img src="image/icons8-групповой-звонок-24.png" alt="">
-                    <h3>SUPER TEAM</h3>
+
+
+
+            <div class="about-block mt-120">
+
+            <div class="block">
+
+                <div class="block-img">
+
+                    <img src="image/about/1.jpg" alt="">
+                    <p>Super team</p>
                 </div>
-                <img src="image/about/2.jpg" alt="">
-                <img src="image/about/3.jpg" alt="">
+
+
+
             </div>
+
+            <div class="block">
+
+                <div class="block-img">
+                    <img src="image/about/2.jpg" alt="">
+                    <p>Super team</p>
+                </div>
+
+
+
+            </div>
+
+            <div class="block">
+
+                <div class="block-img">
+
+                    <img src="image/about/3.jpg" alt="">
+                    <p>Super team</p>
+                </div>
+
+
+
+            </div>
+
         </section>
 
 
         <section class="achivments mt-120">
             <div class="achivments-content container">
                 <div class="achive">
-                    <h3>42</h3>
+                    <h3 id="up42">0</h3>
                     <p>WEB DESIGN PROJECTS</p>
                 </div>
                 <div class="achive">
-                    <h3>123</h3>
+                    <h3 id="up123">0</h3>
                     <p>НАРРY CLIENT
                     </p>
                 </div>
                 <div class="achive">
-                    <h3>15</h3>
+                    <h3 id="up15">0</h3>
                     <p>AWARD WINNER</p>
                 </div>
                 <div class="achive">
-                    <h3>99</h3>
+                    <h3 id="up99">0</h3>
                     <p>СUР OF COFFEE</p>
                 </div>
                 <div class="achive">
-                    <h3>24</h3>
+                    <h3 id="up24">0</h3>
                     <p>MEMBERS</p>
                 </div>
             </div>
@@ -174,60 +206,96 @@
     </main>
 
     <script>
-    const items = document.querySelectorAll('.slider-item');
-    const hero  = document.querySelector('.hero');
-    const DURATION = 5200; // должно совпадать с animation в CSS
+        const items = document.querySelectorAll('.slider-item');
+        const hero = document.querySelector('.hero');
+        const DURATION = 5200; // должно совпадать с animation в CSS
 
-    // список фоновых картинок — по одной на каждый слайд
-    const backgrounds = [
-        'image/intro.jpg',
-        'image/intro2.jpg',
-        'image/intro.jpg',
-        'image/intro2.jpg'
-    ];
+        // список фоновых картинок — по одной на каждый слайд
+        const backgrounds = [
+            'image/intro.jpg',
+            'image/intro2.jpg',
+            'image/intro.jpg',
+            'image/intro2.jpg'
+        ];
 
-    let current = 0;
+        let current = 0;
 
-    function showSlide(index) {
-        // снимаем active со всех
-        items.forEach(item => item.classList.remove('active'));
+        function showSlide(index) {
+            // снимаем active со всех
+            items.forEach(item => item.classList.remove('active'));
 
-        // вешаем на нужный
-        const item = items[index];
-        item.classList.add('active');
+            // вешаем на нужный
+            const item = items[index];
+            item.classList.add('active');
 
-        // перезапускаем анимацию полоски (иначе она не сработает
-        // второй раз при возврате к этому слайду)
-        const bar = item.querySelector('.slider-bar');
-        const newBar = bar.cloneNode(true);
-        bar.replaceWith(newBar);
-        // после замены ::after снова стартует, т.к. класс active уже стоит
+            // перезапускаем анимацию полоски (иначе она не сработает
+            // второй раз при возврате к этому слайду)
+            const bar = item.querySelector('.slider-bar');
+            const newBar = bar.cloneNode(true);
+            bar.replaceWith(newBar);
+            // после замены ::after снова стартует, т.к. класс active уже стоит
 
-        // меняем фон hero
-        hero.style.backgroundImage = `url(${backgrounds[index]})`;
-    }
+            // меняем фон hero
+            hero.style.backgroundImage = `url(${backgrounds[index]})`;
+        }
 
-    function nextSlide() {
-        current = (current + 1) % items.length;
-        showSlide(current);
-    }
+        function nextSlide() {
+            current = (current + 1) % items.length;
+            showSlide(current);
+        }
 
-    // запускаем первый слайд
-    showSlide(0);
+        // запускаем первый слайд
+        showSlide(0);
 
-    // переключаем по завершении анимации полоски
-    // (навешиваем на контейнер — событие всплывает от ::after нельзя,
-    //  поэтому используем interval, но привязанный к длительности)
-    setInterval(nextSlide, DURATION);
+        // переключаем по завершении анимации полоски
+        // (навешиваем на контейнер — событие всплывает от ::after нельзя,
+        //  поэтому используем interval, но привязанный к длительности)
+        setInterval(nextSlide, DURATION);
 
-    // клик по полоске — переход на конкретный слайд
-    items.forEach((item, i) => {
-        item.addEventListener('click', () => {
-            current = i;
-            showSlide(i);
+        // клик по полоске — переход на конкретный слайд
+        items.forEach((item, i) => {
+            item.addEventListener('click', () => {
+                current = i;
+                showSlide(i);
+            });
         });
-    });
-</script>
+
+
+        function countUp(element, target) {
+            let current = 0;
+            const step = Math.ceil(target / 50);
+
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    current = target;
+                }
+                element.textContent = current;
+            }, 40);
+        }
+
+
+        function startCounting() {
+            countUp(document.getElementById('up42'), 42);
+            countUp(document.getElementById('up123'), 123);
+            countUp(document.getElementById('up15'), 15);
+            countUp(document.getElementById('up99'), 99);
+            countUp(document.getElementById('up24'), 24);
+        }
+
+        
+        const achivments = document.querySelector('.achivments');
+        let started = false;
+
+        window.addEventListener('scroll', () => {
+            const rect = achivments.getBoundingClientRect();
+            if (!started && rect.top < 400) {
+                started = true;
+                startCounting();
+            }
+        });
+
+    </script>
 </body>
 
 </html>
