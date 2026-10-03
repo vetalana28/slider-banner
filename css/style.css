@@ -1,0 +1,350 @@
+@font-face {
+    font-family: 'p';
+    src: url(../fonts/Montserrat-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'h2';
+    src: url(../fonts/KaushanScript-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'h1';
+    src: url(../fonts/Montserrat-Bold.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h3,
+h1 {
+    font-family: 'h1';
+    pointer-events: none;
+}
+
+h2 {
+    font-family: 'h2';
+    pointer-events: none;
+    font-weight: lighter;
+}
+
+p,
+a,
+label {
+    font-family: 'p';
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    padding-top: 30px;
+
+    h3 {
+        color: white;
+        font-size: 25px;
+        font-weight: bold;
+        pointer-events: none;
+    }
+}
+
+nav {
+    display: flex;
+    gap: 40px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-link {
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    transition: 0.2s;
+}
+
+.header-link:hover,
+.header-link-active {
+    color: rgb(255, 217, 167);
+    border-bottom: 3px solid rgb(255, 217, 167);
+
+}
+
+a img {
+
+    width: 20px;
+    height: 20px;
+
+}
+
+.hero {
+    height: 100vh;
+    width: 100%;
+    background: url(../image/intro.jpg) center no-repeat;
+    background-size: cover;
+
+}
+
+.hero-text {
+    height: 100vh;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    h1 {
+        line-height: 100px;
+        color: white;
+        font-size: 100px;
+        text-align: center;
+
+    }
+
+    h2 {
+        color: white;
+        font-size: 50px;
+    }
+
+    button {
+        color: white;
+        font-weight: bold;
+        font-size: 14px;
+        background-color: transparent;
+        border: 3px solid white;
+        padding: 8px 20px;
+        transition: 0.3s;
+        cursor: pointer;
+
+
+        &:hover {
+            background-color: white;
+            color: black;
+        }
+    }
+}
+
+.white-border {
+    margin: 20px 0 15px 0;
+    width: 50px;
+    border-bottom: 4px solid white;
+}
+
+.hero-slider {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    bottom: 5%;
+    width: 100%;
+    
+}
+
+.slider-item {
+    flex-grow: 1;   
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    label {
+        color: white;
+        font-size: 14px;
+        letter-spacing: 0.7px;
+        cursor: pointer;
+        opacity: 0.7;
+    }
+
+    span {
+        font-weight: bold;
+        font-size: 18px;
+
+    }
+}
+
+/* фон полоски (неактивное состояние) */
+.slider-bar {
+    position: relative;
+    width: 100%;
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.4);
+    /* overflow: hidden; */
+}
+
+/* активная полоска — заполняющий слой */
+.slider-bar::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 0;
+    background-color: #fff;
+}
+
+/* когда у .slider-item есть класс .active — полоска заполняется */
+.slider-item.active .slider-bar::after {
+    
+    animation: fillBar 5s linear forwards;
+}
+
+.slider-item.active label {
+    color: #fff;
+    opacity: 1;
+}
+
+@keyframes fillBar {
+    from { width: 0; }
+    to   { width: 100%; }
+}
+
+.mt-120 {
+    margin-top: 120px;
+}
+
+.about-text,.services-text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+
+    h2 {
+        font-size: 25px;
+        opacity: 0.7;
+    }
+
+    h3 {
+        font-size: 32px;
+        opacity: 0.7;
+    }
+
+    p {
+        opacity: 0.6;
+        width: 80%;
+    }
+}
+
+.pink-border {
+    margin: 20px 0 15px 0;
+    width: 50px;
+    border-bottom: 4px solid rgb(220, 125, 125);
+}
+
+.about-content {
+    justify-content: space-between;
+    display: flex;
+    pointer-events: none;
+}
+
+.about-content-active {
+    position: relative;
+    top: -10px;
+    margin-right: 10px;
+    width: 32%;
+    opacity: 0.8;
+   background-image: linear-gradient(
+        rgba(234, 105, 105, 0.87),
+        rgba(255, 239, 91, 0.8)
+    ), url(../image/about/1.jpg);
+    background-size: cover;
+    box-shadow: 10px 10px 0px rgba(120, 218, 200, 0.799);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    h3{
+        color: white;
+    }
+    
+}
+
+.achivments
+{
+    height: 300px;
+    width: 100%;
+    background-color: rgba(122, 219, 201, 0.7);;
+}
+
+.achivments-content
+{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+}
+.achive
+{
+    border-left: 1px solid rgba(255, 255, 255, 0.486);
+    border-right: 1px solid rgba(255, 255, 255, 0.486);
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    h3{
+        color: white;
+        font-size: 64px;
+    }
+    p{
+        color: white;
+        font-weight: 600;
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+}
+
+.services-content
+{
+    padding: 60px 0 120px 0;
+}
+
+.service{
+    display: flex;
+    gap: 20px;
+    align-items: start;
+    p{
+        opacity: 0.6;
+        font-size: 14px;
+    }
+    span{
+        font-weight: bold;
+    }
+}
+
+.service-block
+{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+}
+.service-text
+{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.gray-border
+{
+    margin: 50px 0;
+    width: 100%;
+    border-bottom: 1px solid rgb(190, 188, 188);
+}
